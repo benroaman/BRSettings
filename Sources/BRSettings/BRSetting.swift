@@ -113,6 +113,14 @@ public extension BRSetting where Self.Value == Set<Int> {
         set(result)
     }
     
+    static func insert(_ values: any Sequence<Int>) {
+        set(current.union(values))
+    }
+    
+    static func remove(_ values: any Sequence<Int>) {
+        set(current.subtracting(values))
+    }
+    
     static func remove(_ value: Int) {
         var result = current
         result.remove(value)
@@ -126,6 +134,14 @@ public extension BRSetting where Self.Value == Set<String> {
         var result = current
         result.insert(value)
         set(result)
+    }
+    
+    static func insert(_ values: any Sequence<String>) {
+        set(current.union(values))
+    }
+    
+    static func remove(_ values: any Sequence<String>) {
+        set(current.subtracting(values))
     }
     
     static func remove(_ value: String) {
